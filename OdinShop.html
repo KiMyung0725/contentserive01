@@ -34,51 +34,26 @@
 	PW:<input type="password" size="15" name="password" value=""><br> 
 	<input type="submit" value="complete">
 </p>
+	<span id = "profile" style = "color : skyblue"> 1000000 </span> 다이아
 </form>
 </article>
 <hr>
-<script>
-    let today = new Date();
-    document.write("접속시간 : " + today.toLocaleString() + "<br>");
-    let sohwan = ["전설", "영웅", "고급", "일반"];
-    document.write("소환 가능 목록 수\n");
-    if(today.getSeconds()%2==0)
-    	document.body.style.background-image=url("https://t1.kakaocdn.net/gamepub/pub-img/odin/web/pds/gallery/202106/original/1624875649651_13.jpg");
-    else
-    	document.body.style.background-image=url("https://t1.kakaocdn.net/gamepub/pub-img/odin/web/pds/gallery/202106/original/1624875513585_27.jpg");
-    for (let i = 0; i < sohwan.length; i++) {
-        document.write(sohwan[i] + " ");
-    }
-    let User{
-    	owner : "A",
-    	nickname : "AA",
-    	balance : 30000,//로그인 했을때 사용자가 가지고 있는 돈
-    	Avator : 0,
-    	Riding : 0,
-    	Weapon : 0,
-    }
-    let Menu{
-    	type = '',//user 에게 입력 
-    	num = ,//num 값은 1or11
-    	price = price(num),//
-    	
-    }
-    function price(num){
-    	price = (num==1)?800:8000;
-    	return price;
-    }
-    function purchase(type,num,price){//구매 함수
-    	if(type=='Avator'&&num==1){
-    		this.Avator++;
-    		this.balance-=price;
-    	}
-    	else if()
-    }
-    function refund(type, num){//환불 함수
+<script> 
+   function sohwan(type){
+   	let span = document.getElementById('profile');
+   	let number = span.innerText;
+   	if(type=='one'){
+   		number=parseInt(number)-800;
+   	}else if(type =='eleven'){
+   		number=parseInt(number)-8000;
+   	}
+   	span.innerText = number;
+   }
 
-    }
-    
-    
+   function printresult(result1, result2) {
+            let textarea = document.getElementById('result');
+            textarea.value = result1 + result2 + " 회 구매하였습니다.";
+        }
 </script>
 
 <div>
@@ -97,18 +72,26 @@
 		</tbody>
 		<thead>
 			<tr>
-				<td colspan = '2' ><a herf = "C:\Users\김기명\OneDrive\바탕 화면\새 폴더\콘텐츠서비스개발\Avator.html">아바타 소환</a></td>
+				<td colspan = '2' >아바타 소환</td>
 				<td colspan = '2' >탈것 소환</td>
-				<td colspan = '2' >무기형상 소환</td>
+				<td colspan = '2' >무기 형상 소환</td>
 			</tr>
 		</thead>
 		<tfoot>
 			<tr >
-				<td class="s">1회 소환</td><td class = "s">11회소환</td><td class="s">1회 소환</td><td class="s">11회소환</td><td class="s">1회 소환</td><td class="s">11회소환</td>
+				<td>1회<br>800다이아<br><input type = "button" value="소환" onclick = "sohwan('one')&&printresult('아바타','1')"></td><td>11회소환<br>8000다이아<br><input type = "button" value="소환" onclick = "sohwan('eleven')&&printresult('아바타','11')">
+				<td>1회<br>800다이아<br><input type = "button" value="소환" onclick = "sohwan('one')"></td><td>11회소환<br>8000다이아<br><input type = "button" value="소환" onclick = "sohwan('eleven')">
+				<td>1회<br>800다이아<br><input type = "button" value="소환" onclick = "sohwan('one')"></td><td>11회소환<br>8000다이아<br><input type = "button" value="소환" onclick = "sohwan('eleven')" onclick = "printresult('eleven')">
 			</tr>
 		</tfoot>
 	</table>
 </div>
+
+<p>
+	<span style = "color : red">출력결과<br>
+	<textarea id = "result" rows = "10" cols = "50"></textarea>
+	<br><br>
+</p>
 <hr>
 	<a href="https://cafe.daum.net/odin/DDw4/35">아바타 소환 확률 정보</a><br>
 	<a href="https://cafe.daum.net/odin/DDw4/36">탈것 소환 확률 정보</a><br>
